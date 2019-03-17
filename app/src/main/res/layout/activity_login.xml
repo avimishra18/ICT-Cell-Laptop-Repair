@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/gradient_bg"
+    tools:context=".LoginActivity">
+
+    <!-- First Relative Layout contains image and another layout. Sets up the left/right margins -->
+    <RelativeLayout
+        android:id="@+id/relativeMainLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp">
+
+        <!-- Image View Visible in Splash Screen -->
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ict_white_icon"
+            android:scaleType="fitCenter"/>
+
+        <!-- Second Relative Layout contains Login Layout. Visibility gone for Splash -->
+        <RelativeLayout
+            android:id="@+id/relativeOne"
+            android:visibility="gone"
+            android:layout_below="@+id/imageViewLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:text="Login"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-medium"/>
+
+            <!-- Patent Linear Layout Contains  -->
+            <TextView
+                android:id="@+id/textViewUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewLogin"
+                android:layout_marginTop="10sp"
+                android:text="USERNAME"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"/>
+
+            <EditText
+                android:id="@+id/editTextUserName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/textViewUserName"
+                android:background="@drawable/edittext_bg"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginTop="5sp"
+                android:paddingLeft="15sp"
+                android:paddingRight="15sp"/>
+
+            <TextView
+                android:id="@+id/textViewPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextUserName"
+                android:layout_marginTop="10sp"
+                android:text="PASSWORD"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"/>
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/textViewPassword"
+                android:background="@drawable/edittext_bg"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginTop="5sp"
+                android:paddingLeft="15sp"
+                android:paddingRight="15sp"/>
+
+            <Button
+                android:id="@+id/buttonLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:layout_below="@+id/editTextPassword"
+                android:layout_marginTop="50dp"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="70sp"
+                android:paddingRight="70sp"
+
+                android:text="Login Now"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/button_bg" />
+
+        </RelativeLayout>
+        <!-- End of Login Layout i.e relativeOne -->
+
+    </RelativeLayout>
+    <!-- End of Relative One Layout -->
+
+    <!--Start of lower Relative Layout. Space for Future..-->
+    <RelativeLayout
+        android:id="@+id/relativeTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/buttonSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@color/transparent"
+            android:fontFamily="sans-serif-medium"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
