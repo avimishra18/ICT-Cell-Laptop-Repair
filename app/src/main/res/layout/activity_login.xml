@@ -61,6 +61,7 @@
                 android:layout_height="40dp"
                 android:layout_below="@+id/textViewUserName"
                 android:background="@drawable/edittext_bg"
+                android:maxLength="7"
                 android:textSize="15sp"
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif-light"
@@ -93,6 +94,7 @@
                     android:layout_height="40dp"
                     android:inputType="textPassword"
                     android:background="@drawable/edittext_bg"
+                    android:maxLength="20"
                     android:textSize="15sp"
                     android:textColor="@color/white"
                     android:fontFamily="sans-serif-light"
@@ -102,7 +104,13 @@
 
             </android.support.design.widget.TextInputLayout>
 
-
+            <ProgressBar
+                android:id="@+id/progressBarLoading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:visibility="gone"
+                android:layout_below="@+id/widgetPassword"/>
             <Button
                 android:id="@+id/buttonLogin"
                 android:layout_width="wrap_content"

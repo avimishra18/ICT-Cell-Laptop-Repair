@@ -10,7 +10,7 @@ import android.widget.EditText;
 public class RegisterActivity extends AppCompatActivity {
 
     //Declaring Register Edit Text & Buttons
-    EditText registerUserName, registerNumber, registerPassword,registerRePassword;
+    EditText registerRollNumber,registerUserName, registerNumber, registerPassword,registerRePassword;
     Button registerButton, loginSwitchButton;
 
     @Override
@@ -18,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        registerRollNumber = findViewById(R.id.editTextRollNumber);
         registerUserName = findViewById(R.id.editTextUserName);
         registerNumber = findViewById(R.id.editTextNumber);
         registerPassword = findViewById(R.id.editTextPassword);
