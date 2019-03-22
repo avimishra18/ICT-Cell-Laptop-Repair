@@ -12,7 +12,6 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -45,9 +44,26 @@ public class LoginActivity extends AppCompatActivity {
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            //Sets Visibility when the code will be run
-            layoutRelayOne.setVisibility(View.VISIBLE);
-            layoutRelayTwo.setVisibility(View.VISIBLE);
+            //Shared Preference To Keep User Logged In
+            if(SaveSharedPreference.getUserRollnumber(LoginActivity.this).length() != 0) {
+
+                if(SaveSharedPreference.getUserAdmin(LoginActivity.this).equals(1)) {
+                    Intent adminHomeIntent = new Intent(LoginActivity.this, AdminHome.class);
+                    startActivity(adminHomeIntent);
+                    finish();
+                }
+                else {
+                    Intent userHomeIntent = new Intent(LoginActivity.this, UserHome.class);
+                    startActivity(userHomeIntent);
+                    finish();
+                }
+            }
+            //Sets Visibility when user is not logged in
+            else {
+
+                layoutRelayOne.setVisibility(View.VISIBLE);
+                layoutRelayTwo.setVisibility(View.VISIBLE);
+            }
         }
     };
 
@@ -60,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
         layoutRelayTwo = findViewById(R.id.relativeTwo);
         //Sets the delay
         handler.postDelayed(runnable,2500);
-
 
         //Linking the xml with Java file
         usernameEditText = findViewById(R.id.editTextUserName);
@@ -93,7 +108,13 @@ public class LoginActivity extends AppCompatActivity {
                     usernameEditText.setError("Please insert email");
             }
         });
+
+        //Intent after successful registration
+        final Intent loginIntent = getIntent();
+        final String usernameReceived = loginIntent.getStringExtra("rollnumber");
+        usernameEditText.setText(usernameReceived);
     }
+
     //Definition of Login Function
     private void login(final String roll, final String pass){
         progressBar.setVisibility(View.VISIBLE);
@@ -120,20 +141,48 @@ public class LoginActivity extends AppCompatActivity {
                                 for(int i=0; i<jsonArray.length();i++){
 
                                     JSONObject object = jsonArray.getJSONObject(i);
+
+
+                                    String username = object.getString("username").trim();
                                     String rollnumber = object.getString("rollnumber").trim();
                                     String number = object.getString("number").trim();
                                     String password = object.getString("password").trim();
-
+                                    String admin = object.getString("admin").trim();
 
                                     progressBar.setVisibility(View.GONE);
-                                    Toast.makeText(LoginActivity.this,"Login Successful\n"+rollnumber+"\n"+number+"\n"+password,Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this,"Login Successful\n"+rollnumber+"\n"+number+"\n"+admin,Toast.LENGTH_SHORT).show();
+
+                                    //Storing data in Shared preference if Successful
+                                    SaveSharedPreference.setUserName(LoginActivity.this,username);
+                                    SaveSharedPreference.setUserRollnumber(LoginActivity.this,rollnumber);
+                                    SaveSharedPreference.setUserNumber(LoginActivity.this,number);
+                                    SaveSharedPreference.setUserRole(LoginActivity.this,admin);
+                                    SaveSharedPreference.setUserPassword(LoginActivity.this,password);
+
+
+                                    //Switching Intent to Dashboard(HOME)
+                                    if(admin.equals("0")){
+                                        Intent userHomeIntent = new Intent(LoginActivity.this, UserHome.class);
+                                        startActivity(userHomeIntent);
+                                        finish();
+                                    }
+                                    else if(admin.equals("1")) {
+                                        Intent adminHomeIntent = new Intent(LoginActivity.this, AdminHome.class);
+                                        startActivity(adminHomeIntent);
+                                        finish();
+                                    }
                                 }
                             }
                         }catch (JSONException e){ //Catches Error if JSON type mismatch etc
                             e.printStackTrace();
                             progressBar.setVisibility(View.GONE);
                             loginButton.setVisibility(View.VISIBLE);
-                            Toast.makeText(LoginActivity.this, "JSON:Error\n"+e.toString(), Toast.LENGTH_SHORT).show();
+                            //Condition of Error when username not in DATABASE
+                            if(e.toString().trim().equals("org.json.JSONException: End of input at character 0 of")){
+                                usernameEditText.setError("Incorrect Username");
+                            }
+                            else
+                                Toast.makeText(LoginActivity.this, "JSON:Error\n"+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

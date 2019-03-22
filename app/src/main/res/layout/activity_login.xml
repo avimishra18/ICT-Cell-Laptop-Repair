@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textViewLogin"
                 android:layout_marginTop="10sp"
-                android:text="USERNAME or ROLL NUMBER"
+                android:text="ROLL NUMBER or USER ID"
                 android:textSize="15sp"
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif-light"/>
