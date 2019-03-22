@@ -26,8 +26,25 @@ public class AdminHome extends AppCompatActivity {
 
         textViewAdminUsername.setText("Welcome "+SaveSharedPreference.getUserName(AdminHome.this));
 
+        //on Click for Register
+        cardViewAdminRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerComplaintIntent = new Intent(AdminHome.this,RegisterComplaint.class);
+                startActivity(registerComplaintIntent);
+            }
+        });
 
-        //on Click Lister For Account Settings
+        //on Click Listener for History
+        cardViewAdminHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent historyIntent = new Intent(AdminHome.this,HistoryActivity.class);
+                startActivity(historyIntent);
+            }
+        });
+
+        //on Click Listener For Account Settings
         cardViewUserSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,6 +52,5 @@ public class AdminHome extends AppCompatActivity {
                 startActivity(userSettingIntent);
             }
         });
-
     }
 }

@@ -87,12 +87,6 @@ public class AccountSettings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //NOT WORKING
-                //Setting Text To Previous Values
-                editTextUpdateUserName.setHint(SaveSharedPreference.getUserName(AccountSettings.this));
-                editTextUpdateNumber.setHint(SaveSharedPreference.getUserNumber(AccountSettings.this));
-
-
                 //Various User Error
                 if(editTextUpdateUserName.getText().toString().length()<3)
                    Toast.makeText(AccountSettings.this, "Enter a valid username", Toast.LENGTH_SHORT).show();
@@ -160,7 +154,7 @@ public class AccountSettings extends AppCompatActivity {
                     }
                 }
         )
-                //Main body of method Stringrequest
+        //Main body of method Stringrequest
         {
             @Override
             protected Map<String, String> getParams() {

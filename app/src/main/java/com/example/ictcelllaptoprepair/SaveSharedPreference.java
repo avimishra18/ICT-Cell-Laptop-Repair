@@ -60,7 +60,7 @@ public class SaveSharedPreference {
 
     public static String getUserAdmin(Context ctx)
     {
-        return getSharedPreferences(ctx).getString("username", "");
+        return getSharedPreferences(ctx).getString("admin", "");
     }
 
     //Setter and getter for Password

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    android:padding="20dp"
+    tools:context=".RegisterComplaint">
+
+    <!--TEXT VIEW REGISTER COMPLAINT-->
+    <TextView
+        android:id="@+id/textViewNewComplaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="NEW COMPLAINT"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"/>
+
+    <!--ROLL NUMBER TEXT VIEW & EDIT TEXT-->
+    <TextView
+        android:id="@+id/textViewComplaintRollNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="ROLL NUMBER"
+        android:layout_below="@id/textViewNewComplaint"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"/>
+
+    <EditText
+        android:id="@+id/editTextComplainRollNumber"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textViewComplaintRollNumber"
+        android:background="@drawable/edittext_bg"
+        android:inputType="numberDecimal"
+        android:maxLength="10"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="5sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="15sp"/>
+
+    <!-- Text View Model Select -->
+    <TextView
+        android:id="@+id/textViewComplaintModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextComplainRollNumber"
+        android:layout_marginTop="25sp"
+        android:text="MODEL:"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"/>
+
+    <!--RADIO GROUP TO SELECT MODEL -->
+    <RadioGroup
+        android:id="@+id/radioGroupModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/textViewComplaintModel"
+        android:layout_below="@+id/editTextComplainRollNumber">
+
+        <RadioButton
+            android:id="@+id/radioButton440G1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HP ProBook x360 440 G1"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonModel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Third Year Laptop"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"/>
+
+    </RadioGroup>
+
+    <!-- Scanning Button -->
+    <Button
+        android:id="@+id/buttonScanCode"
+        android:layout_width="wrap_content"
+        android:layout_height="40sp"
+        android:layout_below="@+id/radioGroupModel"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="70sp"
+        android:paddingRight="70sp"
+
+        android:text="SCAN QR/BAR CODE"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:background="@drawable/button_bg" />
+
+    <!--SERIAL NUMBER TEXT VIEW & EDIT TEXT-->
+    <TextView
+        android:id="@+id/textViewComplaintSerialNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="SERIAL NUMBER"
+        android:layout_below="@id/buttonScanCode"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"/>
+
+    <EditText
+        android:id="@+id/editTextComplaintSerialNumber"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textViewComplaintSerialNumber"
+        android:background="@drawable/edittext_bg"
+        android:maxLength="20"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="5sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="15sp"/>
+
+    <!--ISSUE TEXT VIEW & EDIT TEXT-->
+    <TextView
+        android:id="@+id/textViewComplaintIssue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="ISSUE"
+        android:layout_below="@id/editTextComplaintSerialNumber"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"/>
+
+    <EditText
+        android:id="@+id/editTextComplaintIssue"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textViewComplaintIssue"
+        android:background="@drawable/edittext_bg"
+        android:maxLength="30"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="5sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="15sp"/>
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBarComplaint"
+        android:layout_below="@+id/editTextComplaintIssue"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!-- Scanning Button -->
+    <Button
+        android:id="@+id/buttonRegisterComplaint"
+        android:layout_width="wrap_content"
+        android:layout_height="40sp"
+        android:layout_below="@+id/progressBarComplaint"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="70sp"
+        android:paddingRight="70sp"
+        android:text="REGISTER COMPLAINT"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:background="@drawable/button_bg" />
+
+
+
+</RelativeLayout>

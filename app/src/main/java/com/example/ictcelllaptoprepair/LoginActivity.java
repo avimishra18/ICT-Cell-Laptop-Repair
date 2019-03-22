@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
             //Shared Preference To Keep User Logged In
             if(SaveSharedPreference.getUserRollnumber(LoginActivity.this).length() != 0) {
 
-                if(SaveSharedPreference.getUserAdmin(LoginActivity.this).equals(1)) {
+                if(SaveSharedPreference.getUserAdmin(LoginActivity.this).equals("1")) {
                     Intent adminHomeIntent = new Intent(LoginActivity.this, AdminHome.class);
                     startActivity(adminHomeIntent);
                     finish();
