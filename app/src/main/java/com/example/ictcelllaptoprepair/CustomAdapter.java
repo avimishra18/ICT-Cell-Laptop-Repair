@@ -46,6 +46,15 @@ public class CustomAdapter extends ArrayAdapter {
 
         Model currentOb = dataList.get(position);
 
+        textViewAdapterComplaintID.setText(currentOb.getComplaintID());
+        textViewAdapterRollNumber.setText("ROLL NUMBER : "+currentOb.getRollnumber());
+        textViewAdapterComplaintDate.setText("COMPLAINT DATE : "+currentOb.getComplaintdate());
+        textViewAdapterRepairDate.setText("REPAIR DATE : "+currentOb.getRepaireddate());
+        textViewAdapterIssue.setText("ISSUE : "+currentOb.getIssue());
+        textViewAdapterModel.setText("MODEL : "+currentOb.getModel());
+        textViewAdapterSerialNumber.setText("SERIAL NUMBER : "+currentOb.getSerialnumber());
+        textViewAdapterStatus.setText("STATUS : "+currentOb.getStatus());
+
         return convertView;
     }
 }

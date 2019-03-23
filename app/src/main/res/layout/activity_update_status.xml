@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    android:padding="20dp"
+    tools:context=".UpdateStatus">
+
+    <!--TEXT VIEW UPDATE STATUS-->
+    <TextView
+        android:id="@+id/textViewUpdateStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="UPDATE STATUS"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"/>
+
+    <!--COMPLAINT TEXT VIEW & EDIT TEXT-->
+    <TextView
+        android:id="@+id/textViewUpdateComplaintID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="COMPLAINT ID"
+        android:layout_below="@id/textViewUpdateStatus"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"/>
+
+    <EditText
+        android:id="@+id/editTextStatusComplaintID"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textViewUpdateComplaintID"
+        android:background="@drawable/edittext_bg"
+        android:inputType="numberDecimal"
+        android:maxLength="10"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="5sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="15sp"/>
+
+    <!--ROLL NUMBER TEXT VIEW & EDIT TEXT-->
+    <TextView
+        android:id="@+id/textViewUpdateRollNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="ROLL NUMBER"
+        android:layout_below="@id/editTextStatusComplaintID"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"/>
+
+    <EditText
+        android:id="@+id/editTextStatusRollNumber"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textViewUpdateRollNumber"
+        android:background="@drawable/edittext_bg"
+        android:inputType="numberDecimal"
+        android:maxLength="10"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="5sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="15sp"/>
+
+    <!-- Text View Status Select -->
+    <TextView
+        android:id="@+id/textViewStatusSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextStatusRollNumber"
+        android:layout_marginTop="25sp"
+        android:text="MODEL:"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"/>
+
+    <!--RADIO GROUP TO SELECT MODEL -->
+    <RadioGroup
+        android:id="@+id/radioGroupStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/textViewStatusSelect"
+        android:layout_below="@+id/editTextStatusRollNumber">
+
+        <RadioButton
+            android:id="@+id/radioButton0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complaint Registered"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Under Repair"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repair Completed"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"/>
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laptop Returned"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-light"/>
+
+    </RadioGroup>
+
+    <!-- Progress Bar as usual -->
+    <ProgressBar
+        android:id="@+id/progressBarStatus"
+        android:layout_below="@+id/radioGroupStatus"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!-- Update Button Button -->
+    <Button
+        android:id="@+id/buttonUpdateStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="40sp"
+        android:layout_below="@+id/radioGroupStatus"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="70sp"
+        android:paddingRight="70sp"
+
+        android:text="UPDATE STATUS"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:background="@drawable/button_bg" />
+
+</RelativeLayout>

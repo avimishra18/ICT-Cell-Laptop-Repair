@@ -109,6 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3sp"
+        android:layout_marginBottom="3sp"
         android:layout_marginLeft="25sp"
         android:text="ISSUE : "
         android:layout_below="@id/textViewAdapterSerialNumber"

@@ -36,6 +36,15 @@ public class AdminHome extends AppCompatActivity {
         });
 
         //on Click Listener for History
+        cardViewAdminUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent updateIntent = new Intent(AdminHome.this,UpdateStatus.class);
+                startActivity(updateIntent);
+            }
+        });
+
+        //on Click Listener for History
         cardViewAdminHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

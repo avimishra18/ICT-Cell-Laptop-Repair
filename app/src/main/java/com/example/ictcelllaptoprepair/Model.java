@@ -5,8 +5,8 @@ public class Model {
     private String complaintID,rollnumber,model,serialnumber,issue,status,complaintdate,repaireddate;
 
     //Constructor
-    public Model(String complaintID, String rollnumber, String model, String serialnumber, String issue,
-                 String status, String complaintdate, String repaireddate) {
+
+    public Model(String complaintID, String rollnumber, String model, String serialnumber, String issue, String status, String complaintdate, String repaireddate) {
         this.complaintID = complaintID;
         this.rollnumber = rollnumber;
         this.model = model;
@@ -16,6 +16,18 @@ public class Model {
         this.complaintdate = complaintdate;
         this.repaireddate = repaireddate;
     }
+
+    //1 Parameter Constructor
+    public Model(String complaintID, String rollnumber) {
+        this.complaintID = complaintID;
+        this.rollnumber = rollnumber;
+    }
+
+    //2 Parameter Constructor
+    public Model(String complaintID) {
+        this.complaintID = complaintID;
+    }
+
 
     //Getters
     public String getComplaintID() {
