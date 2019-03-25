@@ -76,4 +76,17 @@ public class SaveSharedPreference {
         return getSharedPreferences(ctx).getString("password", "");
     }
 
+    //Setter and getter for Status
+    public static void setStatus(Context ctx, String stauts)
+    {
+        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+        editor.putString("status", stauts);
+        editor.apply();
+    }
+
+    public static String getStatus(Context ctx)
+    {
+        return getSharedPreferences(ctx).getString("status", "");
+    }
+
 }

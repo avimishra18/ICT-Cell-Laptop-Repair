@@ -28,12 +28,20 @@ public class UserHome extends AppCompatActivity {
         textViewUserUsername.setText("Welcome "+SaveSharedPreference.getUserName(UserHome.this));
 
         //on Click Listener for History
+        cardViewUserStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent checkSatusIntent = new Intent(UserHome.this,CheckStatus.class);
+                startActivity(checkSatusIntent);
+            }
+        });
+
+        //on Click Listener for History
         cardViewUserHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent historyIntent = new Intent(UserHome.this,HistoryActivity.class);
                 startActivity(historyIntent);
-                finish();
             }
         });
 
@@ -58,7 +66,6 @@ public class UserHome extends AppCompatActivity {
             public void onClick(View v) {
                 Intent userSettingIntent = new Intent(UserHome.this, AccountSettings.class);
                 startActivity(userSettingIntent);
-                finish();
             }
         });
     }

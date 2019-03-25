@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    android:padding="20dp"
+    tools:context=".CheckStatus">
+
+    <!--TEXT VIEW UPDATE STATUS-->
+    <TextView
+        android:id="@+id/textViewCheckStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="CHECK STATUS"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"/>
+
+    <!--COMPLAINT TEXT VIEW & EDIT TEXT-->
+    <TextView
+        android:id="@+id/textViewCheckComplaintID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="COMPLAINT ID"
+        android:layout_below="@id/textViewCheckStatus"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"/>
+
+    <EditText
+        android:id="@+id/editTextStatusComplaintID"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textViewCheckComplaintID"
+        android:background="@drawable/edittext_bg"
+        android:inputType="numberDecimal"
+        android:maxLength="10"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="5sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="15sp"/>
+
+    <!-- Progress Bar as usual -->
+    <ProgressBar
+        android:id="@+id/progressBarCheck"
+        android:layout_below="@+id/editTextStatusComplaintID"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/circle"/>
+    <!-- Update Button Button -->
+
+    <!-- Check Status Button -->
+    <Button
+        android:id="@+id/buttonCheckStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="40sp"
+        android:layout_below="@+id/editTextStatusComplaintID"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="70sp"
+        android:paddingRight="70sp"
+
+        android:text="CHECK STATUS"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-medium"
+        android:background="@drawable/button_bg" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@+id/buttonCheckStatus">
+
+        <!--TEXT VIEW COMPLAINT STATUS-->
+        <TextView
+            android:id="@+id/textViewComplaintStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70sp"
+            android:text="COMPLAINT STATUS"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-medium"/>
+
+        <TextView
+            android:id="@+id/textViewActualStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150sp"
+            android:text="STATUS"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textViewComplaintStatus"
+            android:fontFamily="sans-serif-medium"/>
+
+        <!-- Circular Progress Bar -->
+        <ProgressBar
+            android:id="@+id/circularProgressBar"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            style="?android:progressBarStyleHorizontal"
+            android:progress="80"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textViewComplaintStatus"
+            android:progressDrawable="@drawable/circle"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

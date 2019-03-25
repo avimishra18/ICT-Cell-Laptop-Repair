@@ -13,6 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -27,17 +28,12 @@ import java.util.Map;
 public class HistoryActivity extends AppCompatActivity {
 
     //Login Link of PHP FILE
-    private static String URL_READ="http://ictcell-com.stackstaging.com/read.php";
-    private static String URL_USER_READ="http://ictcell-com.stackstaging.com/userread.php";
+    private static String URL_READ = "http://ictcell-com.stackstaging.com/read.php";
 
     //Array List Model
-    final ArrayList<Model> data =new ArrayList<>();
-
-    String rollnumber,complaintID;
 
     //Implementing a custom list view
     ListView list;
-    Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,138 +42,57 @@ public class HistoryActivity extends AppCompatActivity {
 
         list = findViewById(R.id.historyListView);
 
-        //New String Request FOR ALL HISTORY (ADMIN)
-        if(SaveSharedPreference.getUserAdmin(HistoryActivity.this).equals("1")){
-
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ,
-                    new Response.Listener<String>() { //3rd Parameter
-                        @Override
-                        public void onResponse(String response) {
-                            try{
-                                JSONObject jsonObject = new JSONObject(response);
-                                String success =  jsonObject.getString("success");
-                                Toast.makeText(HistoryActivity.this, success, Toast.LENGTH_LONG).show();
-                                JSONArray jsonArray = jsonObject.getJSONArray("read");
-
-                                //No records found
-                                if(success.equals("0")){
-                                    Toast.makeText(HistoryActivity.this, "No Records Found", Toast.LENGTH_SHORT).show();
-                                }
-                                else if(success.equals("1")){
-                                    //If Login is successful, we retrieve the data from the server
-                                    for(int i=0; i<jsonArray.length();i++){
-
-                                        JSONObject object = jsonArray.getJSONObject(i);
-
-                                        final String rollnumber = object.getString("rollnumber").trim();
-                                        final String complaintID = object.getString("complaintID").trim();
-                                        //model = new Model(rollnumber,complaintID);
-                                        //Toast.makeText(HistoryActivity.this,rollnumber+"\n"+complaintID, Toast.LENGTH_SHORT).show();
-                                        //data.add(model);
-
-                                        Toast.makeText(HistoryActivity.this,"Successful",Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }catch (JSONException e){ //Catches Error if JSON type mismatch etc
-                                e.printStackTrace();
-                                Toast.makeText(HistoryActivity.this, "JSON:Error\n"+e.toString(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    },
-                    new Response.ErrorListener() { //4th Parameter
-                        @Override
-                        public void onErrorResponse(VolleyError error) { //Displays Error in volley (connectivity issues,server down) etc
-                            Toast.makeText(HistoryActivity.this, "Volley:Error\n"+error.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        /*
-        {
-
+        //Creating a JSON Array request
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, URL_READ, null, new Response.Listener<JSONArray>() {
             @Override
-            protected Map<String, String> getParams() {
+            public void onResponse(JSONArray response) {
 
-                Map<String,String> params = new HashMap<>();
+                //Model ArrayList for Custom List View of History
+                ArrayList<Model> data = new ArrayList<>();
+                int count = 0;
 
-                //params.put("complaintID",complaintID);
-                //params.put("rollnumber",rollnumber);
+                while (count < response.length()) {
 
-                return params;
-            }
-        };
-        */
-            //Adding to request queue
-            RequestQueue requestQueue = Volley.newRequestQueue(HistoryActivity.this);
-            requestQueue.add(stringRequest);
-        }
+                    try {
 
-        //For User History
-        else {
+                        JSONObject jsonObject = response.getJSONObject(count);
+                        //Gets the roll number
+                        String rollnumber = jsonObject.getString("rollnumber");
+                        //If Roll Number of User || Operator is Admin
+                        if(SaveSharedPreference.getUserRollnumber(HistoryActivity.this).equals(rollnumber) || SaveSharedPreference.getUserAdmin(HistoryActivity.this).equals("1")) {
 
-            //New String Request
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_USER_READ,
-                    new Response.Listener<String>() { //3rd Parameter
-                        @Override
-                        public void onResponse(String response) {
-                            try{
-                                JSONObject jsonObject = new JSONObject(response);
-                                String success =  jsonObject.getString("success");
-                                JSONArray jsonArray = jsonObject.getJSONArray("read");
-
-                                //If no records come..
-                                if(success.equals("0")){
-                                    Toast.makeText(HistoryActivity.this, "Success=0", Toast.LENGTH_SHORT).show();
-                                }
-                                else if(success.equals("1")){
-                                    //If we find an record is successful, we retrieve the data from the server
-                                    for(int i=0; i<jsonArray.length();i++){
-
-                                        JSONObject object = jsonArray.getJSONObject(i);
-
-                                        complaintID = object.getString("complaintID").trim();
-                                        rollnumber = object.getString("rollnumber").trim();
-                                        storeData(complaintID,rollnumber);
-                                        //Toast.makeText(HistoryActivity.this,rollnumber+"\n"+complaintID, Toast.LENGTH_SHORT).show();
-                                        Toast.makeText(HistoryActivity.this,model.getRollnumber()+"\n"+model.getComplaintID(), Toast.LENGTH_SHORT).show();
-
-                                        //Toast.makeText(HistoryActivity.this, complaintID[index]+" "+rollnumber[index], Toast.LENGTH_SHORT).show();
-                                        //Toast.makeText(HistoryActivity.this,"Successful",Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                }
-                                catch (JSONException e){ //Catches Error if JSON type mismatch, end of input at character 0 etc
-                                e.printStackTrace();
-                                    Toast.makeText(HistoryActivity.this, "JSON:Error\n"+e.toString(), Toast.LENGTH_SHORT).show();
-                                }
+                            String complaintID = jsonObject.getString("complaintID");
+                            String laptopModel = jsonObject.getString("model");
+                            String serialNumber = jsonObject.getString("serialnumber");
+                            String issue = jsonObject.getString("issue");
+                            String status = jsonObject.getString("status");
+                            String complaintDate = jsonObject.getString("complaintdate");
+                            String repairDate = jsonObject.getString("repaireddate");
+                            Model model = new Model(complaintID, rollnumber, laptopModel, serialNumber, issue, status, complaintDate, repairDate);
+                            data.add(model);
                         }
-                    },
-                    new Response.ErrorListener() { //4th Parameter
-                        @Override
-                        public void onErrorResponse(VolleyError error) { //Displays Error in volley (connectivity issues,server down) etc
-                            Toast.makeText(HistoryActivity.this, "Volley:Error\n"+error.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    })
-            {
-                @Override
-                protected Map<String, String> getParams() {
+                        count++;
 
-                    Map<String,String> params = new HashMap<>();
-                    params.put("rollnumber",SaveSharedPreference.getUserRollnumber(HistoryActivity.this));
-                    //Toast.makeText(HistoryActivity.this,SaveSharedPreference.getUserRollnumber(HistoryActivity.this) , Toast.LENGTH_SHORT).show();
-                    return params;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(HistoryActivity.this, "Error!\n" + e.toString(), Toast.LENGTH_SHORT).show();
+                    }
 
-
+                    //Custom Adapter for LIST VIEW
+                    CustomAdapter adapter = new CustomAdapter(HistoryActivity.this, 0, data);
+                    list.setAdapter(adapter);
                 }
-            };
-
-            //Adding to request queue
-            RequestQueue requestQueue = Volley.newRequestQueue(HistoryActivity.this);
-            requestQueue.add(stringRequest);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HistoryActivity.this, "Volley Error\n" + error, Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
+            }
         }
-        //Custom Adapter for LIST VIEW
-        CustomAdapter adapter = new CustomAdapter(HistoryActivity.this,0,data);
-        list.setAdapter(adapter);
-    }
-    public void storeData(String complaintID, String rollnumber){
-        model = new Model(complaintID,rollnumber,"Model","Serial Number","Issue","Status","ComplaintDate","RepairDate");
+        );
+        //Adds the request to the queue
+        MySingleton.getInstance(HistoryActivity.this).addToRequestQueue(jsonArrayRequest);
+
     }
 }

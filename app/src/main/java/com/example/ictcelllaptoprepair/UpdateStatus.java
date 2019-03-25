@@ -99,10 +99,15 @@ public class UpdateStatus extends AppCompatActivity {
                                 startActivity(adminHomeIntent);
                                 finish();
                             }
+                            else{
+                                Toast.makeText(UpdateStatus.this, "No record found", Toast.LENGTH_SHORT).show();
+                                progressBarStatus.setVisibility(View.GONE);
+                                buttonUpdateStatus.setVisibility(View.VISIBLE);
+                            }
 
                         }catch (JSONException e){
                             e.printStackTrace();
-                            Toast.makeText(UpdateStatus.this, "Error!"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UpdateStatus.this, "Enter valid complaint ID!", Toast.LENGTH_SHORT).show();
                             progressBarStatus.setVisibility(View.GONE);
                             buttonUpdateStatus.setVisibility(View.VISIBLE);
                         }
@@ -133,7 +138,6 @@ public class UpdateStatus extends AppCompatActivity {
         //Adds request to queue
         RequestQueue queue = Volley.newRequestQueue(UpdateStatus.this);
         queue.add(request);
-
     }
 
     //Status Select
