@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UpdateStatus extends AppCompatActivity {
+public class        UpdateStatus extends AppCompatActivity {
 
     private static String URL_STATUS="http://ictcell-com.stackstaging.com/status.php";
 

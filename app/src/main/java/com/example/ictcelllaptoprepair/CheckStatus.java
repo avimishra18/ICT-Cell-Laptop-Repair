@@ -47,11 +47,13 @@ public class CheckStatus extends AppCompatActivity {
         circularProgressBar = findViewById(R.id.circularProgressBar);
         relativeLayoutStatus = findViewById(R.id.relativeLayoutStatus);
 
-        //Hides the circular progress bar if edit text value is changed
-        editTextStatusComplaintID.setOnClickListener(new View.OnClickListener() {
+        //Hides the circular progress is changed.
+        editTextStatusComplaintID.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-                relativeLayoutStatus.setVisibility(View.GONE);
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus)
+                    relativeLayoutStatus.setVisibility(View.GONE);
+
             }
         });
 

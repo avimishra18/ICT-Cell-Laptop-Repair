@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.media.session.PlaybackState;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Display;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -30,7 +33,8 @@ public class HistoryActivity extends AppCompatActivity {
     //Login Link of PHP FILE
     private static String URL_READ = "http://ictcell-com.stackstaging.com/read.php";
 
-    //Array List Model
+    //Relative Layout for more detials
+    RelativeLayout relativeItemOnClick;
 
     //Implementing a custom list view
     ListView list;
@@ -41,6 +45,7 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         list = findViewById(R.id.historyListView);
+        //relativeItemOnClick = findViewById(R.id.relativeItemOnClick);
 
         //Creating a JSON Array request
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, URL_READ, null, new Response.Listener<JSONArray>() {
@@ -65,7 +70,7 @@ public class HistoryActivity extends AppCompatActivity {
                             String laptopModel = jsonObject.getString("model");
                             String serialNumber = jsonObject.getString("serialnumber");
                             String issue = jsonObject.getString("issue");
-                            String status = jsonObject.getString("status");
+                            String status = setStatus(jsonObject.getString("status"));
                             String complaintDate = jsonObject.getString("complaintdate");
                             String repairDate = jsonObject.getString("repaireddate");
                             Model model = new Model(complaintID, rollnumber, laptopModel, serialNumber, issue, status, complaintDate, repairDate);
@@ -93,6 +98,28 @@ public class HistoryActivity extends AppCompatActivity {
         );
         //Adds the request to the queue
         MySingleton.getInstance(HistoryActivity.this).addToRequestQueue(jsonArrayRequest);
+    }
 
+    //Circular Progress Bar
+    public String setStatus(String status){
+
+        String output="";
+        if(status.equals("1")){
+            //circularProgressBar.setProgress(100);
+            output = ("Laptop Returned");
+        }
+        else if(status.equals("0")){
+            //circularProgressBar.setProgress(25);
+            output = ("Complaint Registered");
+        }
+        else if(status.equals("2")){
+            //circularProgressBar.setProgress(50);
+            output = ("Under Repair");
+        }
+        else if(status.equals("3")){
+            //circularProgressBar.setProgress(75);
+            output = ("Repair Completed");
+        }
+        return output;
     }
 }

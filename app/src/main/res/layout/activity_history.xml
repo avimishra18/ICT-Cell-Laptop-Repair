@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
-    android:padding="20dp"
+    android:padding="0dp"
     tools:context=".HistoryActivity">
 
-    <!--TEXT VIEW REGISTER COMPLAINT-->
+    <!--TEXT VIEW HISTORY-->
     <TextView
         android:id="@+id/textViewHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
+        android:layout_marginLeft="20dp"
         android:text="HISTORY"
         android:textSize="30sp"
         android:textColor="@color/white"

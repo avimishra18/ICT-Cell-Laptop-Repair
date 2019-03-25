@@ -1,11 +1,12 @@
 package com.example.ictcelllaptoprepair;
 
+import android.widget.Toast;
+
 public class Model {
 
     private String complaintID,rollnumber,model,serialnumber,issue,status,complaintdate,repaireddate;
 
     //Constructor
-
     public Model(String complaintID, String rollnumber, String model, String serialnumber, String issue, String status, String complaintdate, String repaireddate) {
         this.complaintID = complaintID;
         this.rollnumber = rollnumber;
@@ -13,21 +14,17 @@ public class Model {
         this.serialnumber = serialnumber;
         this.issue = issue;
         this.status = status;
-        this.complaintdate = complaintdate;
         this.repaireddate = repaireddate;
-    }
 
-    //1 Parameter Constructor
-    public Model(String complaintID, String rollnumber) {
-        this.complaintID = complaintID;
-        this.rollnumber = rollnumber;
+        String output="";
+        for(int i=0;i<complaintdate.length();i++){
+            if(complaintdate.charAt(i)==' ')
+                break;
+            else
+                output += complaintdate.charAt(i);
+        }
+        this.complaintdate = output;
     }
-
-    //2 Parameter Constructor
-    public Model(String complaintID) {
-        this.complaintID = complaintID;
-    }
-
 
     //Getters
     public String getComplaintID() {

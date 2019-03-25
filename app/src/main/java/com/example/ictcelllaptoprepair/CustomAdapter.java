@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class CustomAdapter extends ArrayAdapter {
     private Context context;
     private ArrayList<Model> dataList;
 
+    RelativeLayout relativeItemOnClick;
     TextView textViewAdapterComplaintID,textViewAdapterRollNumber,textViewAdapterStatus,textViewAdapterComplaintDate;
     TextView textViewAdapterRepairDate,textViewAdapterModel,textViewAdapterSerialNumber,textViewAdapterIssue;
 
@@ -42,6 +44,7 @@ public class CustomAdapter extends ArrayAdapter {
         textViewAdapterModel = convertView.findViewById(R.id.textViewAdapterModel);
         textViewAdapterSerialNumber = convertView.findViewById(R.id.textViewAdapterSerialNumber);
         textViewAdapterIssue = convertView.findViewById(R.id.textViewAdapterIssue);
+        relativeItemOnClick = convertView.findViewById(R.id.relativeItemOnClick);
 
 
         Model currentOb = dataList.get(position);
@@ -49,11 +52,15 @@ public class CustomAdapter extends ArrayAdapter {
         textViewAdapterComplaintID.setText(currentOb.getComplaintID());
         textViewAdapterRollNumber.setText("ROLL NUMBER : "+currentOb.getRollnumber());
         textViewAdapterComplaintDate.setText("COMPLAINT DATE : "+currentOb.getComplaintdate());
-        textViewAdapterRepairDate.setText("REPAIR DATE : "+currentOb.getRepaireddate());
         textViewAdapterIssue.setText("ISSUE : "+currentOb.getIssue());
         textViewAdapterModel.setText("MODEL : "+currentOb.getModel());
         textViewAdapterSerialNumber.setText("SERIAL NUMBER : "+currentOb.getSerialnumber());
         textViewAdapterStatus.setText("STATUS : "+currentOb.getStatus());
+
+        if(currentOb.getRepaireddate().isEmpty())
+            textViewAdapterRepairDate.setText("");
+        else
+            textViewAdapterRepairDate.setText("REPAIRED DATE : "+currentOb.getRepaireddate());
 
         return convertView;
     }

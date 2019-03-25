@@ -38,15 +38,18 @@
         android:layout_toRightOf="@id/textViewAdapterComplaintID"
         android:fontFamily="sans-serif-medium"
         android:text="ROLL NUMBER : "
+        android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="12sp" />
 
+    <!-- Text View Status -->
     <TextView
         android:id="@+id/textViewAdapterStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
         android:text="STATUS : "
+        android:textStyle="bold"
         android:layout_toRightOf="@id/textViewAdapterComplaintID"
         android:layout_below="@id/textViewAdapterRollNumber"
         android:textSize="12sp"
@@ -66,7 +69,7 @@
         android:textColor="@color/white"
         android:fontFamily="sans-serif-medium"/>
 
-    <!-- Text View Complaint Date -->
+    <!-- Text View Repair Date -->
     <TextView
         android:id="@+id/textViewAdapterRepairDate"
         android:layout_width="wrap_content"
@@ -79,42 +82,52 @@
         android:textColor="@color/white"
         android:fontFamily="sans-serif-medium"/>
 
-    <!-- Text View Model -->
-    <TextView
-        android:id="@+id/textViewAdapterModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5sp"
-        android:layout_marginLeft="25sp"
-        android:text="MODEL : "
-        android:layout_below="@id/textViewAdapterComplaintID"
-        android:textSize="12sp"
-        android:textColor="@color/white"
-        android:fontFamily="sans-serif-medium"/>
+    <!-- Relative Layout -->
+    <RelativeLayout
+        android:id="@+id/relativeItemOnClick"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textViewAdapterComplaintID">
 
-    <TextView
-        android:id="@+id/textViewAdapterSerialNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3sp"
-        android:layout_marginLeft="25sp"
-        android:text="SERIAL NUMBER : "
-        android:layout_below="@id/textViewAdapterModel"
-        android:textSize="12sp"
-        android:textColor="@color/white"
-        android:fontFamily="sans-serif-medium"/>
+        <!-- Text View Model -->
+        <TextView
+            android:id="@+id/textViewAdapterModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginLeft="25sp"
+            android:text="MODEL : "
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium"/>
 
-    <TextView
-        android:id="@+id/textViewAdapterIssue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3sp"
-        android:layout_marginBottom="3sp"
-        android:layout_marginLeft="25sp"
-        android:text="ISSUE : "
-        android:layout_below="@id/textViewAdapterSerialNumber"
-        android:textSize="12sp"
-        android:textColor="@color/white"
-        android:fontFamily="sans-serif-medium"/>
+        <!-- Text Serial Number -->
+        <TextView
+            android:id="@+id/textViewAdapterSerialNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3sp"
+            android:layout_marginLeft="25sp"
+            android:text="SERIAL NUMBER : "
+            android:layout_below="@id/textViewAdapterModel"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium"/>
+
+        <!-- Text View Issue -->
+        <TextView
+            android:id="@+id/textViewAdapterIssue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3sp"
+            android:layout_marginBottom="7sp"
+            android:layout_marginLeft="25sp"
+            android:text="ISSUE : "
+            android:layout_below="@id/textViewAdapterSerialNumber"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
