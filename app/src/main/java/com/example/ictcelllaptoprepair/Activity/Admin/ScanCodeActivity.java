@@ -1,9 +1,10 @@
-package com.example.ictcelllaptoprepair.Activity;
+package com.example.ictcelllaptoprepair.Activity.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.ictcelllaptoprepair.Activity.Admin.RegisterComplaintActivity;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;

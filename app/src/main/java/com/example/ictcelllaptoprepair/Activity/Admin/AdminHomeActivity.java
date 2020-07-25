@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair.Activity;
+package com.example.ictcelllaptoprepair.Activity.Admin;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.ictcelllaptoprepair.Activity.Common.AccountSettingsActivity;
+import com.example.ictcelllaptoprepair.Activity.Common.HistoryActivity;
 import com.example.ictcelllaptoprepair.R;
 import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
 

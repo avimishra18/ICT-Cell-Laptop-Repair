@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
     android:padding="20dp"
-    tools:context=".Activity.AccountSettingsActivity">
+    tools:context=".Activity.Common.AccountSettingsActivity">
 
     <!-- FIRST THREE ACCOUNT DETAILS TEXT VIEWS-->
     <RelativeLayout

@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair.Activity;
+package com.example.ictcelllaptoprepair.Activity.Client;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,10 +8,12 @@ import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.ictcelllaptoprepair.Activity.Common.AccountSettingsActivity;
+import com.example.ictcelllaptoprepair.Activity.Common.HistoryActivity;
 import com.example.ictcelllaptoprepair.R;
 import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
 
-public class UserHomeActivity extends AppCompatActivity {
+public class ClientHomeActivity extends AppCompatActivity {
 
     TextView textViewUserUsername;
     CardView cardViewUserStatus,cardViewUserHistory,cardViewUserContactUs,cardViewUserSettings;
@@ -28,13 +30,13 @@ public class UserHomeActivity extends AppCompatActivity {
         cardViewUserContactUs = findViewById(R.id.cardViewUserContactUs);
         cardViewUserSettings = findViewById(R.id.cardViewUserSettings);
 
-        textViewUserUsername.setText("Welcome "+ SaveSharedPreference.getUserName(UserHomeActivity.this));
+        textViewUserUsername.setText("Welcome "+ SaveSharedPreference.getUserName(ClientHomeActivity.this));
 
         //on Click Listener for History
         cardViewUserStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent checkSatusIntent = new Intent(UserHomeActivity.this, CheckStatusActivity.class);
+                Intent checkSatusIntent = new Intent(ClientHomeActivity.this, CheckStatusActivity.class);
                 startActivity(checkSatusIntent);
             }
         });
@@ -43,7 +45,7 @@ public class UserHomeActivity extends AppCompatActivity {
         cardViewUserHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent historyIntent = new Intent(UserHomeActivity.this, HistoryActivity.class);
+                Intent historyIntent = new Intent(ClientHomeActivity.this, HistoryActivity.class);
                 startActivity(historyIntent);
             }
         });
@@ -67,7 +69,7 @@ public class UserHomeActivity extends AppCompatActivity {
         cardViewUserSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent userSettingIntent = new Intent(UserHomeActivity.this, AccountSettingsActivity.class);
+                Intent userSettingIntent = new Intent(ClientHomeActivity.this, AccountSettingsActivity.class);
                 startActivity(userSettingIntent);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair.Activity;
+package com.example.ictcelllaptoprepair.Activity.Admin;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;

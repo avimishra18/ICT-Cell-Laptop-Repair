@@ -1,8 +1,11 @@
-package com.example.ictcelllaptoprepair.Activity;
+package com.example.ictcelllaptoprepair.Activity.Common;
 
 import android.content.Intent;
 import android.os.Handler;
 
+import com.example.ictcelllaptoprepair.Activity.Admin.AdminHomeActivity;
+import com.example.ictcelllaptoprepair.Activity.Client.RegisterActivity;
+import com.example.ictcelllaptoprepair.Activity.Client.ClientHomeActivity;
 import com.example.ictcelllaptoprepair.R;
 import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
 import com.google.android.material.textfield.TextInputLayout;
@@ -57,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    Intent userHomeIntent = new Intent(LoginActivity.this, UserHomeActivity.class);
+                    Intent userHomeIntent = new Intent(LoginActivity.this, ClientHomeActivity.class);
                     startActivity(userHomeIntent);
                     finish();
                 }
@@ -93,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         registerSwitchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -166,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     //Switching Intent to Dashboard(HOME)
                                     if(admin.equals("0")){
-                                        Intent userHomeIntent = new Intent(LoginActivity.this, UserHomeActivity.class);
+                                        Intent userHomeIntent = new Intent(LoginActivity.this, ClientHomeActivity.class);
                                         startActivity(userHomeIntent);
                                         finish();
                                     }

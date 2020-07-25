@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@drawable/gradient_bg"
-    tools:context=".Activity.RegisterActivity">
+    tools:context=".Activity.Client.RegisterActivity">
 
     <!-- First Relative Layout contains image and another layout. Sets up the left/right margins -->
     <RelativeLayout

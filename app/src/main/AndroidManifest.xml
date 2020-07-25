@@ -13,34 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.CheckStatusActivity"
+            android:name=".Activity.Client.CheckStatusActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.UpdateStatusActivity"
+            android:name=".Activity.Admin.UpdateStatusActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.HistoryActivity"
+            android:name=".Activity.Common.HistoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.ScanCodeActivity"
+            android:name=".Activity.Admin.ScanCodeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.RegisterComplaintActivity"
+            android:name=".Activity.Admin.RegisterComplaintActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.AccountSettingsActivity"
+            android:name=".Activity.Common.AccountSettingsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.UserHomeActivity"
+            android:name=".Activity.Client.ClientHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.AdminHomeActivity"
+            android:name=".Activity.Admin.AdminHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.RegisterActivity"
+            android:name=".Activity.Client.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.Common.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

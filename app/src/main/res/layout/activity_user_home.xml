@@ -7,7 +7,7 @@
     android:animateLayoutChanges="true"
     android:layout_margin="10dp"
     android:background="@drawable/home_background"
-    tools:context=".Activity.AdminHomeActivity">
+    tools:context=".Activity.Admin.AdminHomeActivity">
 
     <!-- Relative Layout of Dashboard & Username -->
     <RelativeLayout

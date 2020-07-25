@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
     android:padding="0dp"
-    tools:context=".Activity.HistoryActivity">
+    tools:context=".Activity.Common.HistoryActivity">
 
     <!--TEXT VIEW HISTORY-->
     <TextView

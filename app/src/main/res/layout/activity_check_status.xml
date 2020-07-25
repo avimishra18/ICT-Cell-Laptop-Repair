@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
     android:padding="20dp"
-    tools:context=".Activity.CheckStatusActivity">
+    tools:context=".Activity.Client.CheckStatusActivity">
 
     <!--TEXT VIEW UPDATE STATUS-->
     <TextView

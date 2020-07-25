@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair.Activity;
+package com.example.ictcelllaptoprepair.Activity.Client;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

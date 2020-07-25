@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair.Activity;
+package com.example.ictcelllaptoprepair.Activity.Common;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +17,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ictcelllaptoprepair.Config.Constants;
 import com.example.ictcelllaptoprepair.R;
 import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
 
