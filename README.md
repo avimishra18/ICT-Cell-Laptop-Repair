@@ -1,12 +1,15 @@
 # ICT-Cell-Laptop-Repair
-![Platform](https://img.shields.io/badge/platform-Android-blue.svg)
+![Platform](https://img.shields.io/badge/Client-Android-blue.svg)
+![Platform](https://img.shields.io/badge/Backend-PHP-blue.svg)
+![Platform](https://img.shields.io/badge/Database-MySQL-blue.svg)
+
 
 ## 1. Introduction
-A dedicated [Information Communication Technology (ICT)](https://kiit.ac.in/campuslife/ict/) cell has been set up to provide a wide range of IT services to facilitate Kalinga Institute of Industrial Technology (KIIT), Bhubaneshwar staffs, students and faculties. Apart from providing high – quality , robust and secured services , it also develops ICT skills through teaching , training and support. It also offers repair of Laptops of Students.
+One of my first project is a mock-up or prototype to automate the complaint registeration process. For demonstration purposes, I have modeled this as laptop repair and complaint app for the [Information Communication Technology (ICT)](https://kiit.ac.in/campuslife/ict/) cell of my university i.e. KIIT, Bhubaneshwar. The ICT cell has been set up to provide a wide range of IT services to facilitate for staffs, students and faculties.
 
 ## 2. Problem
-- No receipts of laptops which are given for repair. 
 - Students can't track the status of the repair.
+- No receipts are provided for laptops which are given for repair. 
 
 ## 3. Why ICT Cell Laptop Repair App?
 - App would allow the ICT cell team to:
