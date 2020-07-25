@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Model;
 
 import android.widget.Toast;
 

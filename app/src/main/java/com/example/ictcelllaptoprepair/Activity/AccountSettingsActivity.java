@@ -1,7 +1,7 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ictcelllaptoprepair.R;
+import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -105,7 +107,7 @@ public class AccountSettings extends AppCompatActivity {
     //Log Out Function
     private void logOut(){
         SaveSharedPreference.getSharedPreferences(AccountSettings.this).edit().clear().apply();
-        Intent loginIntent = new Intent(AccountSettings.this,LoginActivity.class);
+        Intent loginIntent = new Intent(AccountSettings.this, LoginActivity.class);
         startActivity(loginIntent);
         finish();
     }
