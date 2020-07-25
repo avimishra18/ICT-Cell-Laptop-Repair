@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ictcelllaptoprepair.Config.Constants;
 import com.example.ictcelllaptoprepair.R;
 import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
 
@@ -26,10 +27,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccountSettings extends AppCompatActivity {
+import static com.example.ictcelllaptoprepair.Config.Constants.baseServerURL;
+
+public class AccountSettingsActivity extends AppCompatActivity {
 
     //PHP FILE URL
-    private static String URL_UPDATE="http://ictcell-com.stackstaging.com/edit_detail.php";
+    private static final String URL_UPDATE= baseServerURL+"edit_detail.php";
 
     //Text View which show various details
     RelativeLayout relativeAccountUpdate;
@@ -91,13 +94,13 @@ public class AccountSettings extends AppCompatActivity {
 
                 //Various User Error
                 if(editTextUpdateUserName.getText().toString().length()<3)
-                   Toast.makeText(AccountSettings.this, "Enter a valid username", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(AccountSettingsActivity.this, "Enter a valid username", Toast.LENGTH_SHORT).show();
                 else if(editTextUpdateNumber.getText().toString().length()!=10)
-                    Toast.makeText(AccountSettings.this, "Enter a valid 10 digit number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountSettingsActivity.this, "Enter a valid 10 digit number", Toast.LENGTH_SHORT).show();
                 else if(editTextUpdatePassword.getText().toString().length()<8)
-                    Toast.makeText(AccountSettings.this, "Passwords is too short", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountSettingsActivity.this, "Passwords is too short", Toast.LENGTH_SHORT).show();
                 else if(!editTextUpdatePassword.getText().toString().equals(editTextUpdateRePassword.getText().toString()))
-                    Toast.makeText(AccountSettings.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountSettingsActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
                 else
                     update();
             }
@@ -106,8 +109,8 @@ public class AccountSettings extends AppCompatActivity {
 
     //Log Out Function
     private void logOut(){
-        SaveSharedPreference.getSharedPreferences(AccountSettings.this).edit().clear().apply();
-        Intent loginIntent = new Intent(AccountSettings.this, LoginActivity.class);
+        SaveSharedPreference.getSharedPreferences(AccountSettingsActivity.this).edit().clear().apply();
+        Intent loginIntent = new Intent(AccountSettingsActivity.this, LoginActivity.class);
         startActivity(loginIntent);
         finish();
     }
@@ -133,14 +136,14 @@ public class AccountSettings extends AppCompatActivity {
 
                             //Successful Register
                             if(success.equals("1")){
-                                Toast.makeText(AccountSettings.this, "Update Successful!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AccountSettingsActivity.this, "Update Successful!", Toast.LENGTH_SHORT).show();
                                 //Logs Out to save details
                                 logOut();
                             }
 
                         }catch (JSONException e){
                             e.printStackTrace();
-                            Toast.makeText(AccountSettings.this, "Error!"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AccountSettingsActivity.this, "Error!"+e.toString(), Toast.LENGTH_SHORT).show();
                             progressBarSettingLoading.setVisibility(View.GONE);
                             buttonConfirmUpdate.setVisibility(View.VISIBLE);
                         }
@@ -150,7 +153,7 @@ public class AccountSettings extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Displays Error Message
-                        Toast.makeText(AccountSettings.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AccountSettingsActivity.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
                         progressBarSettingLoading.setVisibility(View.GONE);
                         buttonConfirmUpdate.setVisibility(View.VISIBLE);
                     }
@@ -162,7 +165,7 @@ public class AccountSettings extends AppCompatActivity {
             protected Map<String, String> getParams() {
 
                 Map<String, String> params = new HashMap<>();
-                params.put("rollnumber",SaveSharedPreference.getUserRollnumber(AccountSettings.this));
+                params.put("rollnumber",SaveSharedPreference.getUserRollnumber(AccountSettingsActivity.this));
                 params.put("username",username);
                 params.put("password",password);
                 params.put("number",number);
@@ -171,7 +174,7 @@ public class AccountSettings extends AppCompatActivity {
             }
         };
         //Adds request to queue
-        RequestQueue queue = Volley.newRequestQueue(AccountSettings.this);
+        RequestQueue queue = Volley.newRequestQueue(AccountSettingsActivity.this);
         queue.add(request);
     }
 }

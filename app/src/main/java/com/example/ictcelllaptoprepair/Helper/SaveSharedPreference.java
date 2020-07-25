@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,7 +6,7 @@ import android.preference.PreferenceManager;
 
 public class SaveSharedPreference {
 
-    static SharedPreferences getSharedPreferences(Context ctx) {
+    public static SharedPreferences getSharedPreferences(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx);
     }
 

@@ -7,7 +7,7 @@
     android:animateLayoutChanges="true"
     android:layout_margin="10dp"
     android:background="@drawable/home_background"
-    tools:context=".AdminHome">
+    tools:context=".Activity.AdminHomeActivity">
 
     <!-- Relative Layout of Dashboard & Username -->
     <RelativeLayout
@@ -67,7 +67,7 @@
         android:columnOrderPreserved="false">
 
         <!-- 1st Card View -->
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardViewUserStatus"
             android:layout_width="0dp"
             android:layout_height="150dp"
@@ -84,10 +84,10 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"/>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <!-- 2nd Card View -->
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardViewUserHistory"
             android:layout_width="0dp"
             android:layout_height="150dp"
@@ -104,10 +104,10 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"/>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <!-- 3rd Card View -->
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardViewUserContactUs"
             android:layout_width="0dp"
             android:layout_height="150dp"
@@ -124,10 +124,10 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"/>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <!-- 4th Card View -->
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardViewUserSettings"
             android:layout_width="0dp"
             android:layout_height="150dp"
@@ -144,7 +144,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"/>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </GridLayout>
 
 </RelativeLayout>

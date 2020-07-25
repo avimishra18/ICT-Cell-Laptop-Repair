@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
 
     @Override
     public void handleResult(Result result) {
-        if(RegisterComplaint.radioButtonModel.getText().equals("HP ProBook x360 440 G1")){
+        if(RegisterComplaintActivity.radioButtonModel.getText().equals("HP ProBook x360 440 G1")){
             String serialnumber="";
             if(!result.toString().isEmpty()){
                 for(int i=0;i<result.toString().length();i++){
@@ -32,14 +32,14 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
                         serialnumber+= result.toString().charAt(i);
                 }
             }
-            RegisterComplaint.editTextComplaintSerialNumber.setText(serialnumber);
+            RegisterComplaintActivity.editTextComplaintSerialNumber.setText(serialnumber);
             Toast.makeText(this, serialnumber, Toast.LENGTH_SHORT).show();
         }
-        else if(RegisterComplaint.radioButtonModel.getText().equals("Third Year Laptop")){
-            RegisterComplaint.editTextComplaintSerialNumber.setText(result.getText());
+        else if(RegisterComplaintActivity.radioButtonModel.getText().equals("Third Year Laptop")){
+            RegisterComplaintActivity.editTextComplaintSerialNumber.setText(result.getText());
         }
         else
-            RegisterComplaint.editTextComplaintSerialNumber.setText(result.getText());
+            RegisterComplaintActivity.editTextComplaintSerialNumber.setText(result.getText());
         onBackPressed();
     }
 

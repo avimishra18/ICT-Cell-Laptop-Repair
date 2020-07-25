@@ -2,12 +2,12 @@ package com.example.ictcelllaptoprepair.Model;
 
 import android.widget.Toast;
 
-public class Model {
+public class Complaint {
 
     private String complaintID,rollnumber,model,serialnumber,issue,status,complaintdate,repaireddate;
 
     //Constructor
-    public Model(String complaintID, String rollnumber, String model, String serialnumber, String issue, String status, String complaintdate, String repaireddate) {
+    public Complaint(String complaintID, String rollnumber, String model, String serialnumber, String issue, String status, String complaintdate, String repaireddate) {
         this.complaintID = complaintID;
         this.rollnumber = rollnumber;
         this.model = model;

@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.ictcelllaptoprepair.Adapter.CustomAdapter;
+import com.example.ictcelllaptoprepair.Model.Complaint;
+import com.example.ictcelllaptoprepair.Helper.MySingleton;
+import com.example.ictcelllaptoprepair.R;
+import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,10 +22,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.example.ictcelllaptoprepair.Config.Constants.baseServerURL;
+
 public class HistoryActivity extends AppCompatActivity {
 
     //Login Link of PHP FILE
-    private static String URL_READ = "http://ictcell-com.stackstaging.com/read.php";
+    private static final String URL_READ = baseServerURL+"read.php";
 
     //Relative Layout for more detials
     RelativeLayout relativeItemOnClick;
@@ -42,7 +49,7 @@ public class HistoryActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
 
                 //Model ArrayList for Custom List View of History
-                ArrayList<Model> data = new ArrayList<>();
+                ArrayList<Complaint> data = new ArrayList<>();
                 int count = 0;
 
                 while (count < response.length()) {
@@ -62,8 +69,8 @@ public class HistoryActivity extends AppCompatActivity {
                             String status = setStatus(jsonObject.getString("status"));
                             String complaintDate = jsonObject.getString("complaintdate");
                             String repairDate = jsonObject.getString("repaireddate");
-                            Model model = new Model(complaintID, rollnumber, laptopModel, serialNumber, issue, status, complaintDate, repairDate);
-                            data.add(model);
+                            Complaint complaint = new Complaint(complaintID, rollnumber, laptopModel, serialNumber, issue, status, complaintDate, repairDate);
+                            data.add(complaint);
                         }
                         count++;
 

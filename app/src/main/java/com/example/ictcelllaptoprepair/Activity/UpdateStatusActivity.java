@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Activity;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ictcelllaptoprepair.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,9 +25,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class        UpdateStatus extends AppCompatActivity {
+import static com.example.ictcelllaptoprepair.Config.Constants.baseServerURL;
 
-    private static String URL_STATUS="http://ictcell-com.stackstaging.com/status.php";
+public class UpdateStatusActivity extends AppCompatActivity {
+
+    private static final String URL_STATUS= baseServerURL+"status.php";
 
     //Linking up the XML & Java File
     EditText editTextStatusComplaintID,editTextStatusRollNumber;
@@ -62,11 +65,11 @@ public class        UpdateStatus extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(editTextStatusComplaintID.getText().toString().isEmpty())
-                    Toast.makeText(UpdateStatus.this, "Enter valid Complaint ID", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateStatusActivity.this, "Enter valid Complaint ID", Toast.LENGTH_SHORT).show();
                 else if (editTextStatusRollNumber.getText().toString().isEmpty())
-                    Toast.makeText(UpdateStatus.this, "Enter valid Roll Number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateStatusActivity.this, "Enter valid Roll Number", Toast.LENGTH_SHORT).show();
                 else if(radioButtonId==0)
-                    Toast.makeText(UpdateStatus.this, "Select status", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateStatusActivity.this, "Select status", Toast.LENGTH_SHORT).show();
                 else
                     updateStatus();
             }
@@ -93,20 +96,20 @@ public class        UpdateStatus extends AppCompatActivity {
 
                             //Successful Register
                             if(success.equals("1")){
-                                Toast.makeText(UpdateStatus.this, "Update Successful!", Toast.LENGTH_SHORT).show();
-                                Intent adminHomeIntent = new Intent(UpdateStatus.this,AdminHome.class);
+                                Toast.makeText(UpdateStatusActivity.this, "Update Successful!", Toast.LENGTH_SHORT).show();
+                                Intent adminHomeIntent = new Intent(UpdateStatusActivity.this, AdminHomeActivity.class);
                                 startActivity(adminHomeIntent);
                                 finish();
                             }
                             else{
-                                Toast.makeText(UpdateStatus.this, "No record found", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UpdateStatusActivity.this, "No record found", Toast.LENGTH_SHORT).show();
                                 progressBarStatus.setVisibility(View.GONE);
                                 buttonUpdateStatus.setVisibility(View.VISIBLE);
                             }
 
                         }catch (JSONException e){
                             e.printStackTrace();
-                            Toast.makeText(UpdateStatus.this, "Enter valid complaint ID!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UpdateStatusActivity.this, "Enter valid complaint ID!", Toast.LENGTH_SHORT).show();
                             progressBarStatus.setVisibility(View.GONE);
                             buttonUpdateStatus.setVisibility(View.VISIBLE);
                         }
@@ -116,7 +119,7 @@ public class        UpdateStatus extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Displays Error Message
-                        Toast.makeText(UpdateStatus.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateStatusActivity.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
                         progressBarStatus.setVisibility(View.GONE);
                         buttonUpdateStatus.setVisibility(View.VISIBLE);
                     }
@@ -135,7 +138,7 @@ public class        UpdateStatus extends AppCompatActivity {
             }
         };
         //Adds request to queue
-        RequestQueue queue = Volley.newRequestQueue(UpdateStatus.this);
+        RequestQueue queue = Volley.newRequestQueue(UpdateStatusActivity.this);
         queue.add(request);
     }
 

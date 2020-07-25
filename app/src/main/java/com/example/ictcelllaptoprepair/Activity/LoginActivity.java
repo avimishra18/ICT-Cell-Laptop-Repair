@@ -1,7 +1,10 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Activity;
 
 import android.content.Intent;
 import android.os.Handler;
+
+import com.example.ictcelllaptoprepair.R;
+import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +29,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.ictcelllaptoprepair.Config.Constants.baseServerURL;
+
 public class LoginActivity extends AppCompatActivity {
 
     //Declaring Login Edit Text & Button
@@ -35,8 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
     //Login Link of PHP FILE
-    //LOCAL LINK: private static String URL_LOGIN="http://10.5.223.31/volley/login.php";
-    private static String URL_LOGIN="http://ictcell-com.stackstaging.com/login.php";
+    private static String URL_LOGIN=baseServerURL+"login.php";
 
     //Basic Splash Screen + Login Activity
     RelativeLayout layoutRelayOne,layoutRelayTwo;
@@ -48,12 +52,12 @@ public class LoginActivity extends AppCompatActivity {
             if(SaveSharedPreference.getUserRollnumber(LoginActivity.this).length() != 0) {
 
                 if(SaveSharedPreference.getUserAdmin(LoginActivity.this).equals("1")) {
-                    Intent adminHomeIntent = new Intent(LoginActivity.this, AdminHome.class);
+                    Intent adminHomeIntent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                     startActivity(adminHomeIntent);
                     finish();
                 }
                 else {
-                    Intent userHomeIntent = new Intent(LoginActivity.this, UserHome.class);
+                    Intent userHomeIntent = new Intent(LoginActivity.this, UserHomeActivity.class);
                     startActivity(userHomeIntent);
                     finish();
                 }
@@ -162,12 +166,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                     //Switching Intent to Dashboard(HOME)
                                     if(admin.equals("0")){
-                                        Intent userHomeIntent = new Intent(LoginActivity.this, UserHome.class);
+                                        Intent userHomeIntent = new Intent(LoginActivity.this, UserHomeActivity.class);
                                         startActivity(userHomeIntent);
                                         finish();
                                     }
                                     else if(admin.equals("1")) {
-                                        Intent adminHomeIntent = new Intent(LoginActivity.this, AdminHome.class);
+                                        Intent adminHomeIntent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                                         startActivity(adminHomeIntent);
                                         finish();
                                     }

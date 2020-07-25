@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Adapter;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
@@ -10,19 +10,22 @@ import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.ictcelllaptoprepair.Model.Complaint;
+import com.example.ictcelllaptoprepair.R;
+
 import java.util.ArrayList;
 
 public class CustomAdapter extends ArrayAdapter {
 
     private Context context;
-    private ArrayList<Model> dataList;
+    private ArrayList<Complaint> dataList;
 
     RelativeLayout relativeItemOnClick;
     TextView textViewAdapterComplaintID,textViewAdapterRollNumber,textViewAdapterStatus,textViewAdapterComplaintDate;
     TextView textViewAdapterRepairDate,textViewAdapterModel,textViewAdapterSerialNumber,textViewAdapterIssue;
 
     //Constructor of Custom Adapter
-    public CustomAdapter(Context context, int resource, ArrayList<Model> objects) {
+    public CustomAdapter(Context context, int resource, ArrayList<Complaint> objects) {
         super(context, resource, objects);
         this.context = context;
         this.dataList = objects;
@@ -45,7 +48,7 @@ public class CustomAdapter extends ArrayAdapter {
         relativeItemOnClick = convertView.findViewById(R.id.relativeItemOnClick);
 
 
-        Model currentOb = dataList.get(position);
+        Complaint currentOb = dataList.get(position);
 
         textViewAdapterComplaintID.setText(currentOb.getComplaintID());
         textViewAdapterRollNumber.setText("ROLL NUMBER : "+currentOb.getRollnumber());

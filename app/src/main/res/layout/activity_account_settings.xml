@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
     android:padding="20dp"
-    tools:context=".AccountSettings">
+    tools:context=".Activity.AccountSettingsActivity">
 
     <!-- FIRST THREE ACCOUNT DETAILS TEXT VIEWS-->
     <RelativeLayout
@@ -156,7 +156,7 @@
             android:textColor="@color/white"
             android:fontFamily="sans-serif-light"/>
         <!-- Password Toggle Widget -->
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/widgetUpdatePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
                 android:paddingLeft="15sp"
                 android:paddingRight="15sp"/>
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- RePassword Text View -->
         <TextView
@@ -191,7 +191,7 @@
             android:textColor="@color/white"
             android:fontFamily="sans-serif-light"/>
         <!-- RePassword Toggle Widget -->
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/widgetUpdateRePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -212,7 +212,7 @@
                 android:paddingLeft="15sp"
                 android:paddingRight="15sp"/>
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Progress Bar -->
         <ProgressBar

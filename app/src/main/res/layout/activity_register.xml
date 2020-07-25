@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@drawable/gradient_bg"
-    tools:context=".RegisterActivity">
+    tools:context=".Activity.RegisterActivity">
 
     <!-- First Relative Layout contains image and another layout. Sets up the left/right margins -->
     <RelativeLayout
@@ -118,7 +118,7 @@
             android:textColor="@color/white"
             android:fontFamily="sans-serif-light"/>
          <!-- Password Toggle Widget -->
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/widgetPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                 android:paddingLeft="15sp"
                 android:paddingRight="15sp"/>
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Text View and Edit Text For Re-Password-->
         <TextView
@@ -153,7 +153,7 @@
             android:textColor="@color/white"
             android:fontFamily="sans-serif-light"/>
         <!-- Re-Password Toggle Widget -->
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/widgetRePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                 android:paddingLeft="15sp"
                 android:paddingRight="15sp"/>
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Progress Bar-->
         <ProgressBar

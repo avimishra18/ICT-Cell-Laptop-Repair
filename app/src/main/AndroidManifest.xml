@@ -13,34 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".CheckStatus"
+            android:name=".Activity.CheckStatusActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".UpdateStatus"
+            android:name=".Activity.UpdateStatusActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HistoryActivity"
+            android:name=".Activity.HistoryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ScanCodeActivity"
+            android:name=".Activity.ScanCodeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RegisterComplaint"
+            android:name=".Activity.RegisterComplaintActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AccountSettings"
+            android:name=".Activity.AccountSettingsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".UserHome"
+            android:name=".Activity.UserHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AdminHome"
+            android:name=".Activity.AdminHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activity.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

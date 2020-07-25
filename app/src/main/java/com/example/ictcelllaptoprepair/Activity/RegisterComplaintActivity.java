@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Activity;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ictcelllaptoprepair.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +25,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterComplaint extends AppCompatActivity {
+import static com.example.ictcelllaptoprepair.Config.Constants.baseServerURL;
+
+public class RegisterComplaintActivity extends AppCompatActivity {
 
     int radioButtonId=0;
     RadioGroup radioGroupModel;
@@ -37,7 +40,7 @@ public class RegisterComplaint extends AppCompatActivity {
     public static EditText editTextComplaintSerialNumber;
 
     //PHP FILE LINK
-    private static String URL_NEWCOMPLAINT="http://ictcell-com.stackstaging.com/newcomplaint.php";
+    private static final String URL_NEWCOMPLAINT=baseServerURL+"newcomplaint.php";
 
 
     @Override
@@ -71,7 +74,7 @@ public class RegisterComplaint extends AppCompatActivity {
         buttonScanCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ScanCodeIntent = new Intent(RegisterComplaint.this,ScanCodeActivity.class);
+                Intent ScanCodeIntent = new Intent(RegisterComplaintActivity.this, ScanCodeActivity.class);
                 startActivity(ScanCodeIntent);
             }
         });
@@ -83,13 +86,13 @@ public class RegisterComplaint extends AppCompatActivity {
 
                 //Various User Mistakes
                 if(editTextComplainRollNumber.getText().toString().length()<3)
-                    Toast.makeText(RegisterComplaint.this, "Enter a valid roll number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterComplaintActivity.this, "Enter a valid roll number", Toast.LENGTH_SHORT).show();
                 else if(radioButtonId==0)
-                    Toast.makeText(RegisterComplaint.this, "Please select the model", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterComplaintActivity.this, "Please select the model", Toast.LENGTH_SHORT).show();
                 else if(editTextComplaintSerialNumber.getText().toString().length()<3)
-                    Toast.makeText(RegisterComplaint.this, "Enter a valid serial number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterComplaintActivity.this, "Enter a valid serial number", Toast.LENGTH_SHORT).show();
                 else if (editTextComplaintIssue.getText().toString().length()<3)
-                    Toast.makeText(RegisterComplaint.this, "Please type the issue", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterComplaintActivity.this, "Please type the issue", Toast.LENGTH_SHORT).show();
                 else
                     newComplaint();
             }
@@ -123,12 +126,12 @@ public class RegisterComplaint extends AppCompatActivity {
                             if(success.equals("1")){
 
                                 finish();
-                                Toast.makeText(RegisterComplaint.this, "Complaint Registered", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterComplaintActivity.this, "Complaint Registered", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(RegisterComplaint.this, "Error!"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterComplaintActivity.this, "Error!"+e.toString(), Toast.LENGTH_SHORT).show();
                             progressBarComplaint.setVisibility(View.GONE);
                             buttonRegisterComplaint.setVisibility(View.VISIBLE);
                         }
@@ -138,7 +141,7 @@ public class RegisterComplaint extends AppCompatActivity {
                 new Response.ErrorListener() { //4th Parameter
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegisterComplaint.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterComplaintActivity.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
                         progressBarComplaint.setVisibility(View.GONE);
                         buttonRegisterComplaint.setVisibility(View.VISIBLE);
                     }
@@ -156,7 +159,7 @@ public class RegisterComplaint extends AppCompatActivity {
             }
         };
         //Adds request to queue
-        RequestQueue queue = Volley.newRequestQueue(RegisterComplaint.this);
+        RequestQueue queue = Volley.newRequestQueue(RegisterComplaintActivity.this);
         queue.add(request);
     }
 }

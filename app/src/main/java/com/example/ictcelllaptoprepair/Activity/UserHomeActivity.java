@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +8,10 @@ import androidx.cardview.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
-public class UserHome extends AppCompatActivity {
+import com.example.ictcelllaptoprepair.R;
+import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
+
+public class UserHomeActivity extends AppCompatActivity {
 
     TextView textViewUserUsername;
     CardView cardViewUserStatus,cardViewUserHistory,cardViewUserContactUs,cardViewUserSettings;
@@ -25,13 +28,13 @@ public class UserHome extends AppCompatActivity {
         cardViewUserContactUs = findViewById(R.id.cardViewUserContactUs);
         cardViewUserSettings = findViewById(R.id.cardViewUserSettings);
 
-        textViewUserUsername.setText("Welcome "+SaveSharedPreference.getUserName(UserHome.this));
+        textViewUserUsername.setText("Welcome "+ SaveSharedPreference.getUserName(UserHomeActivity.this));
 
         //on Click Listener for History
         cardViewUserStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent checkSatusIntent = new Intent(UserHome.this,CheckStatus.class);
+                Intent checkSatusIntent = new Intent(UserHomeActivity.this, CheckStatusActivity.class);
                 startActivity(checkSatusIntent);
             }
         });
@@ -40,7 +43,7 @@ public class UserHome extends AppCompatActivity {
         cardViewUserHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent historyIntent = new Intent(UserHome.this,HistoryActivity.class);
+                Intent historyIntent = new Intent(UserHomeActivity.this, HistoryActivity.class);
                 startActivity(historyIntent);
             }
         });
@@ -64,7 +67,7 @@ public class UserHome extends AppCompatActivity {
         cardViewUserSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent userSettingIntent = new Intent(UserHome.this, AccountSettings.class);
+                Intent userSettingIntent = new Intent(UserHomeActivity.this, AccountSettingsActivity.class);
                 startActivity(userSettingIntent);
             }
         });

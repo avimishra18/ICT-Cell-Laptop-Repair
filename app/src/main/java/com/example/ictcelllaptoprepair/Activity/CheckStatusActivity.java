@@ -1,4 +1,4 @@
-package com.example.ictcelllaptoprepair;
+package com.example.ictcelllaptoprepair.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ictcelllaptoprepair.Helper.SaveSharedPreference;
+import com.example.ictcelllaptoprepair.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,9 +26,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CheckStatus extends AppCompatActivity {
+import static com.example.ictcelllaptoprepair.Config.Constants.baseServerURL;
 
-    private static String URL_CHECKSTATUS="http://ictcell-com.stackstaging.com/checkstatus.php";
+public class CheckStatusActivity extends AppCompatActivity {
+
+    private static final String URL_CHECKSTATUS=baseServerURL+"checkstatus.php";
     //Linking up the XML & Java Files
     RelativeLayout relativeLayoutStatus;
     EditText editTextStatusComplaintID;
@@ -62,7 +66,7 @@ public class CheckStatus extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(editTextStatusComplaintID.getText().toString().isEmpty())
-                    Toast.makeText(CheckStatus.this, "Enter valid complaint ID", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CheckStatusActivity.this, "Enter valid complaint ID", Toast.LENGTH_SHORT).show();
                 else
                     checkStatus();
             }
@@ -75,7 +79,7 @@ public class CheckStatus extends AppCompatActivity {
         buttonCheckStatus.setVisibility(View.GONE);
 
         final String complaintID = this.editTextStatusComplaintID.getText().toString().trim();
-        final String rollnumber = SaveSharedPreference.getUserRollnumber(CheckStatus.this);
+        final String rollnumber = SaveSharedPreference.getUserRollnumber(CheckStatusActivity.this);
 
         //Main Volley Code to make request
         StringRequest request = new StringRequest(Request.Method.POST,URL_CHECKSTATUS,
@@ -100,7 +104,7 @@ public class CheckStatus extends AppCompatActivity {
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String status = object.getString("status").trim();
                                     //Toast.makeText(CheckStatus.this, "Successful!\n"+status, Toast.LENGTH_SHORT).show();
-                                    SaveSharedPreference.setStatus(CheckStatus.this,status);
+                                    SaveSharedPreference.setStatus(CheckStatusActivity.this,status);
                                     progressBarCheck.setVisibility(View.GONE);
                                     buttonCheckStatus.setVisibility(View.VISIBLE);
                                     setprogress();
@@ -109,7 +113,7 @@ public class CheckStatus extends AppCompatActivity {
 
                         }catch (JSONException e){
                             e.printStackTrace();
-                            Toast.makeText(CheckStatus.this, "Enter valid complaint ID  ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CheckStatusActivity.this, "Enter valid complaint ID  ", Toast.LENGTH_SHORT).show();
                             progressBarCheck.setVisibility(View.GONE);
                             buttonCheckStatus.setVisibility(View.VISIBLE);
                         }
@@ -119,7 +123,7 @@ public class CheckStatus extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Displays Error Message
-                        Toast.makeText(CheckStatus.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckStatusActivity.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
                         progressBarCheck.setVisibility(View.GONE);
                         buttonCheckStatus.setVisibility(View.VISIBLE);
                     }
@@ -137,7 +141,7 @@ public class CheckStatus extends AppCompatActivity {
             }
         };
         //Adds request to queue
-        RequestQueue queue = Volley.newRequestQueue(CheckStatus.this);
+        RequestQueue queue = Volley.newRequestQueue(CheckStatusActivity.this);
         queue.add(request);
     }
 
@@ -146,7 +150,7 @@ public class CheckStatus extends AppCompatActivity {
         //Makes the layout visible
         relativeLayoutStatus.setVisibility(View.VISIBLE);
 
-        String status = SaveSharedPreference.getStatus(CheckStatus.this);
+        String status = SaveSharedPreference.getStatus(CheckStatusActivity.this);
         if(status.equals("1")){
             circularProgressBar.setProgress(100);
             textViewActualStatus.setText("Laptop\nReturned");
